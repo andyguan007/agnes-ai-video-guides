@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agnes AI Video Fails with 429 or 503? What They Mean and How to Fix Them</title>
+<meta name="description" content="HTTP 429 Too Many Requests and HTTP 503 Service Unavailable on Agnes AI video generation are temporary. Learn what they mean and how an AI smart scheduling engine fixes them for free.">
+<meta name="keywords" content="agnes ai video fails,http 429 too many requests,http 503 service unavailable,rate limit meaning,queue full meaning,ai video scheduler,free fix 429 503">
+<meta name="robots" content="index,follow">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E%F0%9F%8E%AC%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Agnes AI Video Fails with 429 or 503? What They Mean and How to Fix Them">
+<meta property="og:description" content="A short guide to HTTP 429 and 503 on Agnes AI video generation, and how an AI smart scheduling engine fixes them.">
+</head>
+<body style="margin:0;background:#0f172a;color:#e2e8f0;font-family:-apple-system,'Segoe UI','Helvetica Neue',sans-serif;line-height:1.8;font-size:16px">
+<div style="max-width:820px;margin:0 auto;padding:32px 20px">
+  <p style="font-size:14px;color:#64748b"><a href="./index.html" style="color:#60a5fa">← All guides</a></p>
+  <h1 style="font-size:30px;color:#38bdf8;margin:16px 0 8px">Agnes AI Video Fails with 429 or 503? What They Mean and How to Fix Them</h1>
+  <p style="color:#94a3b8">If your requests keep returning HTTP 429 or 503, you're not doing anything wrong — you're hitting the API's normal traffic controls.</p>
+
+  <h2 style="font-size:22px;color:#a5b4fc;margin:32px 0 12px">Decoding the two error codes</h2>
+  <ul style="padding-left:20px">
+    <li><strong>429 Too Many Requests</strong> — your KEY exceeded its per-minute rate limit. It is a temporary throttle and clears on its own.</li>
+    <li><strong>503 Service Unavailable</strong> — the generation queue is full / the server is busy and not accepting new jobs right now. It clears as soon as a slot frees up.</li>
+  </ul>
+  <p>Both are <strong>transient</strong>. A task that fails with 429 or 503 will usually succeed seconds later — if you're set up to try again automatically.</p>
+
+  <h2 style="font-size:22px;color:#a5b4fc;margin:32px 0 12px">Why manual retrying fails</h2>
+  <ul style="padding-left:20px">
+    <li>You re-hammer the <strong>same key</strong>, making the 429 more likely.</li>
+    <li>You send new requests straight into a <strong>full queue</strong>, getting more 503s.</li>
+    <li>You waste your key's limited request budget on attempts that were doomed anyway.</li>
+  </ul>
+
+  <h2 style="font-size:22px;color:#a5b4fc;margin:32px 0 12px">The fix that works: an AI smart scheduling engine</h2>
+  <p>The practical solution is a <strong>browser-local AI smart scheduling engine</strong> that automates the retrying with two behaviors:</p>
+  <ul style="padding-left:20px">
+    <li><strong>Multiple keys, auto-rotated.</strong> Requests spread across every key you add. When one key is cooling down after a 429, the next one takes over — so the rate limit becomes a pool, not a single bottleneck.</li>
+    <li><strong>Intelligent handling.</strong> On a 429, the affected key is frozen for a cooldown while others continue. On a 503, the job simply waits and retries with backoff until a slot opens — the task is never "lost", it's queued.</li>
+  </ul>
+
+  <h2 style="font-size:22px;color:#a5b4fc;margin:32px 0 12px">A free option</h2>
+  <p>This is all handled by a free browser tool that works against the official Agnes AI API — keys stay on your machine and are never uploaded. Text-to-video, first/last frame, reference image and audio modes are supported.</p>
+  <p>The takeaway: 429 and 503 are the API telling you "not now" — the right response isn't to quit, it's to let the AI smart scheduling engine wait for you.</p>
+
+  <p style="font-size:13px;color:#64748b;margin-top:36px">Fix HTTP 429 &amp; 503 for Agnes AI Video · Agnes Video Task Scheduler</p>
+</div>
+</body>
+</html>
